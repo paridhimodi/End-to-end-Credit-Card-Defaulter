@@ -1,0 +1,362 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit card defaulter</title>
+
+
+    <!-- BootStrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+    <!-- css -->
+    <link rel="stylesheet" href="static/css/styles.css">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+h1 {
+  background-color: black;
+  color: lightgreen;
+}
+h3{
+color:white;}
+h4{color: lightgreen;}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 15%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 1 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 70%;
+    display: block;
+    margin-bottom: 50px;
+  }
+}
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.9);
+  padding: 10px;
+  text-align: center;
+  background-color: white;
+  background-image: linear-gradient(to right, lightblue , lightgreen);
+}
+.grid-container {
+  display: grid;
+  height: 100px;
+  align-content: center;
+  grid-template-columns: auto auto auto;
+  grid-gap: 13px;
+  background-color: #2196F3;
+  padding: 10px;
+}
+#grad1 {
+  height: 200px;
+  background-color: lightgreen; /* For browsers that do not support gradients */
+  background-image: linear-gradient(to right, lightblue , lightgreen);
+}
+
+
+</style>
+</head>
+<body style="background-color:black;">
+
+<h1 style="text-align:center"><b>Credit Card Defaulter Classifier</b></h1>
+<h3 style="text-align:center ;">To cheack weather a person is defaulter or not</h3>
+    <!-- As a heading -->
+
+
+    <br><br><br>
+
+
+    <div class="container">
+
+
+
+        <form action="\predict" method="post">
+
+
+            <div class="row">
+
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">AGE</h5>
+                            <input  name="AGE" id="AGE" required="required">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">EDUCATION</h5>
+                            <select  name="EDUCATION" id="EDUCATION" required="required">
+                                <option value="Graduate school">Graduate school</option>
+                                <option value="University">University</option>
+                                <option value="High school">High school</option>
+                                <option value="other">other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">SEX</h5>
+                            <select  name="SEX" id="SEX" required="required">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">MARRIAGE</h5>
+                            <select  name="MARRIAGE" id="MARRIAGE" required="required">
+                                <option value="Married">Married</option>
+                                <option value="Not Married">Not married</option>
+                                <option value="Other">other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">LIMIT BALANCE</h5>
+                            <input name="LIMIT_BAL" id="LIMIT_BAL" required="required">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Repayment status</h5>
+                            <div class="row">
+                                <div class="column">
+                                    <p>April</p>
+                                    <select name="April" id="April" required="required">
+
+                                        <option value="pay duly">PAY DULY</option>
+                                        <option value="1 month delay">1 month delay</option>
+                                        <option value="2 month delay">2 month delay</option>
+                                        <option value="3 month delay">3 month delay</option>
+                                        <option value="4 month delay">4 month delay</option>
+                                        <option value="5 month delay">5 month delay</option>
+                                        <option value="6 month delay">6 month delay</option>
+                                        <option value="7 month delay">7 month delay</option>
+                                        <option value="8 month delay">8 month delay</option>
+                                        <option value="9 month delay">9 month delay</option>
+                                    </select>
+                                </div>
+                                <div class="column">
+                                    <p>May</p>
+                                    <select name="May" id="May" required="required">
+
+                                        <option value="PAY DULY">PAY DULY</option>
+                                        <option value="1 month delay">1 month delay</option>
+                                        <option value="2 month delay">2 month delay</option>
+                                        <option value="3 month delay">3 month delay</option>
+                                        <option value="4 month delay">4 month delay</option>
+                                        <option value="5 month delay">5 month delay</option>
+                                        <option value="6 month delay">6 month delay</option>
+                                        <option value="7 month delay">7 month delay</option>
+                                        <option value="8 month delay">8 month delay</option>
+                                        <option value="9 month delay">9 month delay</option>
+                                    </select>
+                                </div>
+                                <div class="column">
+                                    <p>June</p>
+                                    <select name="June" id="June" required="required">
+
+                                        <option value="PAY DULY">PAY DULY</option>
+                                        <option value="1 month delay">1 month delay</option>
+                                        <option value="2 month delay">2 month delay</option>
+                                        <option value="3 month delay">3 month delay</option>
+                                        <option value="4 month delay">4 month delay</option>
+                                        <option value="5 month delay">5 month delay</option>
+                                        <option value="6 month delay">6 month delay</option>
+                                        <option value="7 month delay">7 month delay</option>
+                                        <option value="8 month delay">8 month delay</option>
+                                        <option value="9 month delay">9 month delay</option>
+                                    </select>
+                                </div>
+                                <div class="column">
+                                    <p>July</p>
+                                    <select name="July" id="July" required="required">
+                                        <option value="PAY DULY">PAY DULY</option>
+                                        <option value="1 month delay">1 month delay</option>
+                                        <option value="2 month delay">2 month delay</option>
+                                        <option value="3 month delay">3 month delay</option>
+                                        <option value="4 month delay">4 month delay</option>
+                                        <option value="5 month delay">5 month delay</option>
+                                        <option value="6 month delay">6 month delay</option>
+                                        <option value="7 month delay">7 month delay</option>
+                                        <option value="8 month delay">8 month delay</option>
+                                        <option value="9 month delay">9 month delay</option>
+                                    </select>
+                                </div>
+                                <div class="column">
+                                    <p>August</p>
+                                    <select name="August" id="August" required="required">
+                                        <option value="PAY DULY">PAY DULY</option>
+                                        <option value="1 month delay">1 month delay</option>
+                                        <option value="2 month delay">2 month delay</option>
+                                        <option value="3 month delay">3 month delay</option>
+                                        <option value="4 month delay">4 month delay</option>
+                                        <option value="5 month delay">5 month delay</option>
+                                        <option value="6 month delay">6 month delay</option>
+                                        <option value="7 month delay">7 month delay</option>
+                                        <option value="8 month delay">8 month delay</option>
+                                        <option value="9 month delay">9 month delay</option>
+                                    </select>
+                                </div>
+                                <div class="column">
+                                    <p>September</p>
+                                    <select name="September" id="September" required="required">
+
+                                        <option value="PAY DULY">PAY DULY</option>
+                                        <option value="1 month delay">1 month delay</option>
+                                        <option value="2 month delay">2 month delay</option>
+                                        <option value="3 month delay">3 month delay</option>
+                                        <option value="4 month delay">4 month delay</option>
+                                        <option value="5 month delay">5 month delay</option>
+                                        <option value="6 month delay">6 month delay</option>
+                                        <option value="7 month delay">7 month delay</option>
+                                        <option value="8 month delay">8 month delay</option>
+                                        <option value="9 month delay">9 month delay</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Bill Amount</h5>
+                                <div class ="column">
+                                <p>April</p>
+                                <input name="BILL_AMT1" id="BILL_AMT1" required="required">
+                                </div>
+                                <div class ="column">
+                                <p>May</p>
+                                <input name="BILL_AMT2" id="BILL_AMT2" required="required">
+                                </div>
+                                <div class ="column">
+                                    <p>June</p>
+                                    <input name="BILL_AMT3" id="BILL_AMT3" required="required">
+                                </div>
+                                <div class ="column">
+                                    <p>July</p>
+                                    <input name="BILL_AMT4" id="BILL_AMT4" required="required">
+                                </div>
+                                <div class ="column">
+                                    <p>August</p>
+                                    <input name="BILL_AMT5" id="BILL_AMT5" required="required">
+                                </div>
+                                <div class ="column">
+                                    <p>September</p>
+                                    <input name="BILL_AMT6" id="BILL_AMT6" required="required">
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Previous Payments</h5>
+                            <div class="column">
+                                <p>April</p>
+                                <input name="PAY_AMT1" id="PAY_AMT1" required="required">
+                            </div>
+                            <div class="column">
+                                <p>May</p>
+                                <input name="PAY_AMT2"   id="PAY_AMT2" required="required">
+                            </div>
+                            <div class="column">
+                                <p>June</p>
+                                <input name="PAY_AMT3"  id="PAY_AMT3" required="required">
+                            </div>
+                            <div class="column">
+                                <p>July</p>
+                                <input name="PAY_AMT4"  id="PAY_AMT4" required="required">
+                            </div>
+                            <div class="column">
+                                <p>August</p>
+                                <input name="PAY_AMT5" id="PAY_AMT5" required="required">
+                            </div>
+                            <div class="column">
+                                <p>September</p>
+                                <input name="PAY_AMT6" id="PAY_AMT6" required="required">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <br>
+            <br>
+            <br>
+>
+
+            <input type="submit" value="Submit" class="btn btn-secondary">
+
+        </form>
+
+        <br>
+        <br>
+        <h3 style="text-align:center">{{ prediction_text }}</h3>
+
+        <br>
+        <br>
+        <h4>©PARIDHI MODI</h4>
+
+    </div>
+
+
+
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
